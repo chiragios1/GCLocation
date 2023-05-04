@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "GCLocation",
+    platforms: [
+        .iOS(.v16)
+        ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -12,6 +15,19 @@ let package = Package(
             targets: ["GCLocation"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.0"),
+        
+        .package(url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", from: "3.7.0"),
+       
+        .package(url: "https://github.com/ZipArchive/ZipArchive.git", from: "2.5.0"),
+        .package(url: "https://github.com/ashleymills/Reachability.swift", from: "5.1.0")
+        
+
+       
+       
+        
+
+
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
@@ -20,7 +36,14 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "GCLocation",
-            dependencies: []),
+            dependencies: [.product(name: "Alamofire", package: "Alamofire"),
+                           .product(name: "CocoaLumberjack", package: "CocoaLumberjack"),
+                           .product(name: "CocoaLumberjackSwift", package: "CocoaLumberjack"),
+                           .product(name: "Reachability", package: "Reachability.swift"),
+                           .product(name: "ZipArchive", package: "ZipArchive")
+                           
+                           
+            ], path: "Sources"),
         .testTarget(
             name: "GCLocationTests",
             dependencies: ["GCLocation"]),

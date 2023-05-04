@@ -98,7 +98,10 @@ public class GCLocation: NSObject {
         AlamoFireCommon.PostURL(url: "client", dict: dict) { responceData, success, error in
             if success
             {
-                self.callAPIForGETclient(responceData["Id"] as! String)
+                if let data = (responceData["Data"] as? [String: Any]) {
+                    self.callAPIForGETclient(data["Id"] as! String)
+                    
+                }
             }
             
         }
@@ -216,11 +219,12 @@ public class GCLocation: NSObject {
         AlamoFireCommon.GetURL(url: "client/\(clientID)", dict: [:]) { responceData, success, error in
             if success
             {
-                
-                if let Token = (responceData["Token"] as? String) {
-                   
-                    UserDefaults.standard.set(Token, forKey: "Token")
-                    self.callAPIForCreateCustomerID(clientID)
+                if let data = (responceData["Data"] as? [String: Any]) {
+                    if let Token = (data["Token"] as? String) {
+                        
+                        UserDefaults.standard.set(Token, forKey: "Token")
+                        self.callAPIForCreateCustomerID(clientID)
+                    }
                 }
                 
                 
@@ -237,9 +241,11 @@ public class GCLocation: NSObject {
         AlamoFireCommon.PostURL(url: "customer", dict: dict) { responceData, success, error in
             if success
             {
-                
-                if let clientID = (responceData["Id"] as? String) {
-                    self.callAPIForGetCustomer(clientID)
+                if let data = (responceData["Data"] as? [String: Any]) {
+                    if let clientID = (data["Id"] as? String) {
+                        self.callAPIForGetCustomer(clientID)
+                    }
+                    
                 }
                 
 
@@ -257,10 +263,11 @@ public class GCLocation: NSObject {
         AlamoFireCommon.GetURL(url: "customer/\(CustomerID)", dict: [:]) { responceData, success, error in
             if success
             {
-                
-                if let customerID = (responceData["Id"] as? String) {
-                    
-                    UserDefaults.standard.set(customerID, forKey: "user_id")
+                if let data = (responceData["Data"] as? [String: Any]) {
+                    if let customerID = (data["Id"] as? String) {
+                        
+                        UserDefaults.standard.set(customerID, forKey: "user_id")
+                    }
                 }
                 
             }

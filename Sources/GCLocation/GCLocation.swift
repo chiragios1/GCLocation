@@ -220,9 +220,9 @@ public class GCLocation: NSObject {
             if success
             {
                 if let data = (responceData["Data"] as? [String: Any]) {
-                    if let Token = (data["Token"] as? String) {
+                    if let Token = (data["token"] as? String) {
                         
-                        UserDefaults.standard.set(Token, forKey: "Token")
+                        UserDefaults.standard.set(Token, forKey: "token")
                         self.callAPIForCreateCustomerID(clientID)
                     }
                 }

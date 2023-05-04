@@ -264,7 +264,7 @@ public class GCLocation: NSObject {
             if success
             {
                 if let data = (responceData["Data"] as? [String: Any]) {
-                    if let customerID = (data["Id"] as? String) {
+                    if let customerID = (data["id"] as? String) {
                         
                         UserDefaults.standard.set(customerID, forKey: "user_id")
                     }

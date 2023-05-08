@@ -91,9 +91,11 @@ public class GCLocation: NSObject {
 
         }
     }
+    public func setUserId(UserID: String, Token: String) {
+        UserDefaults.standard.set(UserID, forKey: "user_id")
+    }
     
-    
-    public func setUserId(clintName: String) {
+    public func createNewClient(clintName: String) {
         let dict = ["client_name" : clintName] as [String : Any]
         AlamoFireCommon.PostURL(url: "client", dict: dict) { responceData, success, error in
             if success
@@ -265,7 +267,6 @@ public class GCLocation: NSObject {
             {
                 if let data = (responceData["Data"] as? [String: Any]) {
                     if let customerID = (data["id"] as? String) {
-                        
                         UserDefaults.standard.set(customerID, forKey: "user_id")
                     }
                 }

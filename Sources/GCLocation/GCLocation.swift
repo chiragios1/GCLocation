@@ -28,7 +28,7 @@ public class GCLocation: NSObject {
     public var timer = Timer()
     public  let formatter = DateFormatter()
     //public let generatedUser = ((Bool) -> Void)?.self
-    var generatedUser : ((Bool) -> Void)?
+   public var generatedUser : ((Bool) -> Void)?
     // Parse two times as strings
     public  let time1String = "13:30"
     public  let time2String = "14:45"

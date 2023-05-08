@@ -1,8 +1,8 @@
 //
 //  LocationUpdateFailur+CoreDataClass.swift
-//  
+//  GCLocation
 //
-//  Created by admin on 24/04/23.
+//  Created by admin on 08/05/23.
 //
 //
 

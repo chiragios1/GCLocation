@@ -1,8 +1,8 @@
 //
 //  Locationwithtimestamp+CoreDataProperties.swift
-//  
+//  GCLocation
 //
-//  Created by admin on 06/04/23.
+//  Created by admin on 08/05/23.
 //
 //
 
@@ -16,9 +16,9 @@ extension Locationwithtimestamp {
         return NSFetchRequest<Locationwithtimestamp>(entityName: "Locationwithtimestamp")
     }
 
+    @NSManaged public var applicationState: String?
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
     @NSManaged public var timestamp: Date?
-    @NSManaged public var applicationState : String
 
 }

@@ -6,8 +6,9 @@ import PackageDescription
 let package = Package(
     name: "GCLocation",
     platforms: [
-        .iOS(.v16)
-        ],
+        .iOS("15.5"),
+        
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -19,7 +20,7 @@ let package = Package(
         
         .package(url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", from: "3.7.0"),
        
-        .package(url: "https://github.com/ZipArchive/ZipArchive.git", from: "2.5.0"),
+        .package(url: "https://github.com/ZipArchive/ZipArchive.git", from: "2.0.0"),
         .package(url: "https://github.com/ashleymills/Reachability.swift", from: "5.1.0")
         
 

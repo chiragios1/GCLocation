@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+@objc(Locationwithtimestamp)
 public class Locationwithtimestamp: NSManagedObject {
 
 }

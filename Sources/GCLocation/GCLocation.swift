@@ -33,6 +33,7 @@ public class GCLocation: NSObject {
     // Parse two times as strings
     public  let time1String = "13:30"
     public  let time2String = "14:45"
+    public let strFullServerURL = ""
     enum ApplicationState {
         case active
         case inactive
@@ -81,7 +82,9 @@ public class GCLocation: NSObject {
             }
 
         }
-    
+    public func configure(serverURL: String, ClientKey: String){
+        AlamoFireCommon.fullURL = serverURL
+    }
     public func startTracking(){
         self.startLocation()
         let calendar = Calendar.current
@@ -225,20 +228,28 @@ public class GCLocation: NSObject {
               if reachability.connection == .wifi || reachability.connection == .cellular
               {
                   print("Reachable via WiFi or celluar")
-                  
-//                  let obj = UserDefaults.standard.retrieve(object: LocationUpdateFailurUserDefault.self, fromKey: "LocationUpdateFailurUserDefault") as! [LocationUpdateFailurUserDefault]
-//
-//                  if obj.count > 0 {
-//                      var resultsDict = [[String: Any]]()
-//                      for result in obj {
-//
-//                          resultsDict.append(result.toDict())
-//                      }
-//
-//
-//                      self.callAPIForPlaceStorForOffline(parameters: resultsDict)
-//                  }
+                  let managedContext = self.cdsLocationWithTimestamp.managedContext
 
+                  // Fetch all persons
+                  let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
+                  
+                  do {
+                      let results = try managedContext.fetch(fetchRequest)
+                      if results.count > 0 {
+                          var resultsDict = [[String: Any]]()
+                          for result in results {
+                             
+                              resultsDict.append(result.toDict())
+                          }
+                          
+                          
+                          self.callAPIForPlaceStorForOffline(parameters: resultsDict)
+                      }
+                      
+
+                  } catch let error as NSError {
+                      print("Fetch error: \(error), \(error.userInfo)")
+                  }
                   print("Network not reachable")
                   
               }
@@ -265,21 +276,21 @@ public class GCLocation: NSObject {
                 }
             } else {
                 
-                var aLocationUpdateFailur: LocationUpdateFailurUserDefault!
-                aLocationUpdateFailur.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
-                aLocationUpdateFailur.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
-                aLocationUpdateFailur.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
-
-                //To save the object
-                UserDefaults.standard.save(customObject: aLocationUpdateFailur, inKey: "aLocationUpdateFailur")
-
-//                let managedContext =  self.cdsLocationWithTimestamp.managedContext
+//                var aLocationUpdateFailur: LocationUpdateFailurUserDefault!
+//                aLocationUpdateFailur.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
+//                aLocationUpdateFailur.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
+//                aLocationUpdateFailur.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
 //
-//                let newLocation = LocationUpdateFailur(context: managedContext)
-//                newLocation.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
-//                newLocation.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
-//                newLocation.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
-//                self.cdsLocationWithTimestamp.saveContext()
+//                //To save the object
+//                UserDefaults.standard.save(customObject: aLocationUpdateFailur, inKey: "aLocationUpdateFailur")
+
+                let managedContext =  self.cdsLocationWithTimestamp.managedContext
+
+                let newLocation = LocationUpdateFailur(context: managedContext)
+                newLocation.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
+                newLocation.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
+                newLocation.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
+                self.cdsLocationWithTimestamp.saveContext()
                 
                 
             }
@@ -287,38 +298,38 @@ public class GCLocation: NSObject {
     }
     public func callAPIForPlaceStorForOffline(parameters : [[String: Any]]){
         
-//        let dict = ["positions" : parameters] as [String : Any]
-//        
-//        AlamoFireCommon.PostURL(url: "position", dict: dict) { responceData, success, error in
-//            if success
-//            {
-//                var status = 0
-//                if let code = responceData["StatusCode"] as? Int
-//                {
-//                    status = code
-//                }
-//                if status == 201
-//                {
-//                    let managedContext = AppDelegate.sharedAppDelegate.cdsLocationWithTimestamp.managedContext
-//
-//                    // Fetch all persons
-//                    let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
-//                    fetchRequest.includesPropertyValues = true
-//                    
-//                    do {
-//                        let results = try managedContext.fetch(fetchRequest)
-//                        for result in results {
-//                            managedContext.delete(result)
-//                        }
-//                        AppDelegate.sharedAppDelegate.cdsLocationWithTimestamp.saveContext()
-//                        
-//
-//                    } catch let error as NSError {
-//                        print("Fetch error: \(error), \(error.userInfo)")
-//                    }
-//                }
-//            }
-//        }
+        let dict = ["positions" : parameters] as [String : Any]
+        
+        AlamoFireCommon.PostURL(url: "position", dict: dict) { responceData, success, error in
+            if success
+            {
+                var status = 0
+                if let code = responceData["StatusCode"] as? Int
+                {
+                    status = code
+                }
+                if status == 201
+                {
+                    let managedContext = self.cdsLocationWithTimestamp.managedContext
+
+                    // Fetch all persons
+                    let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
+                    fetchRequest.includesPropertyValues = true
+                    
+                    do {
+                        let results = try managedContext.fetch(fetchRequest)
+                        for result in results {
+                            managedContext.delete(result)
+                        }
+                        self.cdsLocationWithTimestamp.saveContext()
+                        
+
+                    } catch let error as NSError {
+                        print("Fetch error: \(error), \(error.userInfo)")
+                    }
+                }
+            }
+        }
     }
     public func callAPIForGETclient(_ clientID : String){
         AlamoFireCommon.GetURL(url: "client/\(clientID)", dict: [:]) { responceData, success, error in

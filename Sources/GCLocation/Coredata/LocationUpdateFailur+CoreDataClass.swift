@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-
+@objc(LocationUpdateFailur)
 public class LocationUpdateFailur: NSManagedObject {
 
 }

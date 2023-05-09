@@ -60,10 +60,12 @@ enum AlertTitleMessage {
 
 public class AlamoFireCommon:  NSObject
 {
+    static var fullURL : String!
     static let shared = AlamoFireCommon()
         
         private override init() {
             super.init()
+            
             let consoleLogger = DDOSLogger.sharedInstance
             DDLog.add(consoleLogger)
           
@@ -74,7 +76,8 @@ public class AlamoFireCommon:  NSObject
     {
         if SingleTon.isInternetAvailable()
         {
-            let fullUrl = "https://api-staging.green-convenience.com/v1/api/\(url)"
+          //  let fullUrl = "https://api-staging.green-convenience.com/v1/api/\(url)"
+            let fullUrl = "\(fullURL ?? "")\(url)"
             var headers = HTTPHeaders()
             headers = ["Content-Type": "application/json", "key": UserDefaults.standard.string(forKey: "Token") ?? ""]
            // fullUrl =  APIURL.BASEURL + url
@@ -124,7 +127,8 @@ public class AlamoFireCommon:  NSObject
     {
         if SingleTon.isInternetAvailable()
         {
-            let fullUrl = "https://api-staging.green-convenience.com/v1/api/\(url)"
+            //let fullUrl = "https://api-staging.green-convenience.com/v1/api/\(url)"
+            let fullUrl = "\(fullURL ?? "")\(url)"
             var headers = HTTPHeaders()
             headers = ["Content-Type": "application/json", "key": UserDefaults.standard.string(forKey: "Token") ?? ""]
            // fullUrl =  APIURL.BASEURL + url

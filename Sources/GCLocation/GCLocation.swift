@@ -83,6 +83,7 @@ public class GCLocation: NSObject {
         }
     
     public func startTracking(){
+        self.startLocation()
         let calendar = Calendar.current
         let now = Date()
 

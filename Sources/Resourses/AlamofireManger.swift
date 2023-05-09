@@ -79,7 +79,7 @@ public class AlamoFireCommon:  NSObject
           //  let fullUrl = "https://api-staging.green-convenience.com/v1/api/\(url)"
             let fullUrl = "\(fullURL ?? "")\(url)"
             var headers = HTTPHeaders()
-            headers = ["Content-Type": "application/json", "key": UserDefaults.standard.string(forKey: "Token") ?? ""]
+            headers = ["Content-Type": "application/json", "key": UserDefaults.standard.string(forKey: "token") ?? ""]
            // fullUrl =  APIURL.BASEURL + url
 
        
@@ -130,7 +130,7 @@ public class AlamoFireCommon:  NSObject
             //let fullUrl = "https://api-staging.green-convenience.com/v1/api/\(url)"
             let fullUrl = "\(fullURL ?? "")\(url)"
             var headers = HTTPHeaders()
-            headers = ["Content-Type": "application/json", "key": UserDefaults.standard.string(forKey: "Token") ?? ""]
+            headers = ["Content-Type": "application/json", "key": UserDefaults.standard.string(forKey: "token") ?? ""]
            // fullUrl =  APIURL.BASEURL + url
 
        

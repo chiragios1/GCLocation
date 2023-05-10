@@ -82,8 +82,10 @@ public class GCLocation: NSObject {
             }
 
         }
-    public func configure(serverURL: String, ClientKey: String){
+    public func configure(serverURL: String, ClientKey: String, ClientID: String){
         AlamoFireCommon.fullURL = serverURL
+        UserDefaults.standard.set(ClientKey, forKey: "ClientKey")
+        UserDefaults.standard.set(ClientID, forKey: "ClientID")
     }
     public func startTracking(){
         self.startLocation()
@@ -105,7 +107,7 @@ public class GCLocation: NSObject {
 
         }
     }
-    public func setUserId(UserID: String, Token: String)  {
+    public func setUserId(UserID: String)  {
         UserDefaults.standard.set(UserID, forKey: "user_id")
         
     }
@@ -117,15 +119,20 @@ public class GCLocation: NSObject {
             {
                 if let data = (responceData["Data"] as? [String: Any]) {
                     self.callAPIForGETclient(data["Id"] as! String)
-                    
+
                 }
             }
             else {
                 self.generatedUser!(false)
-                
+
             }
-            
+
         }
+        
+        
+    }
+    public func generateUser(){
+        self.callAPIForCreateCustomerID(UserDefaults.standard.string(forKey: "ClientID")!)
     }
     public func GetLogFile(){
         let logFileLogger = DDFileLogger()
@@ -366,12 +373,6 @@ public class GCLocation: NSObject {
                     }
                     
                 }
-                
-
-                
-                
-               
-                
             }
             else {
                 self.generatedUser!(false)

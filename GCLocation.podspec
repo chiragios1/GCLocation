@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GCLocation'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A Swift library for working with geographic locations and coordinates.'
 
 # This description is used to generate tags and improve search results.
@@ -26,13 +26,13 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'chiragios1' => 'chirag.patel1@bacancy.com' }
   s.source           = { :git => 'https://github.com/chiragios1/GCLocation.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+ 
 
   s.ios.deployment_target = '15.5'
 
   s.source_files = 'Sources/GCLocation/**/*'
   
-
+s.resource = 'Sources/GCLocation/**/*.{xcdatamodel}'
 
  
  

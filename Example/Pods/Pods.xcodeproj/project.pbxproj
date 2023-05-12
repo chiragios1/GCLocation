@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0872D03D649648333A92F939BADE22A1 /* Pods-GCLocation_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GCLocation_Tests.modulemap"; sourceTree = "<group>"; };
-		21D0672D4CAE7B88F117543D7CE0C6EC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		21D0672D4CAE7B88F117543D7CE0C6EC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		2545DDB1373DE271DA517F45A748A140 /* Pods-GCLocation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GCLocation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		26E2273A9FB2221CC55FC3DB40BE8654 /* Pods-GCLocation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GCLocation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3124F991692F6EDB5D1BFEF6AF4B5239 /* GCLocation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GCLocation-Info.plist"; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		586E352CC767CB7718265EA26C8705F8 /* Pods-GCLocation_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GCLocation_Example-Info.plist"; sourceTree = "<group>"; };
 		5939F0F7FFADBC2935F01BAB531EC9BB /* Pods-GCLocation_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GCLocation_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5D68A40E3A5CB10EBEF11784CDBDEB8D /* GCLocation */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GCLocation; path = GCLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		72256E6FBCD5E9A0A37EBDF4FECD604F /* GCLocation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = GCLocation.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		72256E6FBCD5E9A0A37EBDF4FECD604F /* GCLocation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = GCLocation.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		742F475585AD1FA369190FAC47575193 /* Pods-GCLocation_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GCLocation_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		75B090AB2412F71530F4FB121FD48243 /* Pods-GCLocation_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-GCLocation_Tests"; path = Pods_GCLocation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +55,7 @@
 		7B5B6EF8C96A35E0E7050A4474138DFA /* GCLocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GCLocation.debug.xcconfig; sourceTree = "<group>"; };
 		7D2B346FB169E28CA4C475EC27565102 /* Pods-GCLocation_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GCLocation_Example-frameworks.sh"; sourceTree = "<group>"; };
 		97B84C0530FA9152FFA59F63B62EA161 /* GCLocation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GCLocation-prefix.pch"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		A0548265BE8C17A97B086BF1405C1B54 /* Pods-GCLocation_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GCLocation_Tests-umbrella.h"; sourceTree = "<group>"; };
 		AD1CAAD549F9C720897AA0CD3E2043DB /* Pods-GCLocation_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GCLocation_Example-dummy.m"; sourceTree = "<group>"; };
 		AD1E4CC2D674A3834650AC9F8E902439 /* GCLocation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GCLocation-dummy.m"; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		C18675D82220F5E1BD6A3358969F4F04 /* Pods-GCLocation_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-GCLocation_Example"; path = Pods_GCLocation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AD47EE249F928E525859681B162BF8 /* Pods-GCLocation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GCLocation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E7FCC1F2D84001D62A487E74390DEAFA /* Pods-GCLocation_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GCLocation_Example.modulemap"; sourceTree = "<group>"; };
-		EAB6337B69E25A280962E7F14BF21A58 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		EAB6337B69E25A280962E7F14BF21A58 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EB43CF82012400B7F06E5049372EFBF4 /* Pods-GCLocation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GCLocation_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		ECD2C05FCA4D0AEAE0CBD309F01A7C7F /* Pods-GCLocation_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GCLocation_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		F0D38F2929C83D7EC9FA93B3A55507A4 /* Pods-GCLocation_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GCLocation_Tests-Info.plist"; sourceTree = "<group>"; };
@@ -594,8 +594,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

@@ -22,7 +22,7 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/chiragios1/GCLocation'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+ 
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'chiragios1' => 'chirag.patel1@bacancy.com' }
   s.source           = { :git => 'https://github.com/chiragios1/GCLocation.git', :tag => s.version.to_s }
@@ -32,11 +32,8 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'Sources/**/*'
   
-  # s.resource_bundles = {
-  #   'GCLocation' => ['GCLocation/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+
+ 
+ 
 end

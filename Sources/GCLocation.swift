@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreLocation
-//import CoreData
+import CoreData
 import  Alamofire
 //import CocoaLumberjack
 import CocoaLumberjackSwift
@@ -23,7 +23,7 @@ import ZipArchive
 @available(macOS 11.0, *)
 public class GCLocation: NSObject {
    // var locationObject = [Locationwithtimestamp]()
-  //  public lazy var cdsLocationWithTimestamp: CoreDataStack = .init(modelName: "LocationWithTimestamp")
+    public lazy var cdsLocationWithTimestamp: CoreDataStack = .init(modelName: "LocationWithTimestamp")
     public  var locationManager:CLLocationManager?
     public var timer = Timer()
     public  let formatter = DateFormatter()
@@ -86,7 +86,6 @@ public class GCLocation: NSObject {
         AlamoFireCommon.fullURL = serverURL
         UserDefaults.standard.set(ClientKey, forKey: "ClientKey")
         UserDefaults.standard.set(ClientID, forKey: "ClientID")
-       
     }
     public func startTracking(){
         self.startLocation()
@@ -202,29 +201,24 @@ public class GCLocation: NSObject {
            
              callAPIForPlaceStore(geoHash: s)
              
-             var newLocation: LocationwithtimestampUserDefault!
-             newLocation.longitude = location.coordinate.latitude
-             newLocation.latitude = location.coordinate.longitude
-             newLocation.timestamp = Date()
-             newLocation.applicationState  = ApplicationState().toString()
-
-             //To save the object
-             var aResult = UserDefaults.standard.retrieve(object: [LocationwithtimestampUserDefault].self, fromKey: "LocationwithtimestampUserDefault")
-             aResult?.append(newLocation)
-             
-             UserDefaults.standard.save(customObject: aResult, inKey: "LocationwithtimestampUserDefault")
-             
-           
-             
-             
-//             let managedContext = self.cdsLocationWithTimestamp.managedContext
-//             let newLocation = Locationwithtimestamp(context: managedContext)
+//             var newLocation: LocationwithtimestampUserDefault!
 //             newLocation.longitude = location.coordinate.latitude
 //             newLocation.latitude = location.coordinate.longitude
 //             newLocation.timestamp = Date()
 //             newLocation.applicationState  = ApplicationState().toString()
 //
-//             cdsLocationWithTimestamp.saveContext()
+//             //To save the object
+//             UserDefaults.standard.save(customObject: newLocation, inKey: "newLocation")
+             
+             
+             let managedContext = self.cdsLocationWithTimestamp.managedContext
+             let newLocation = Locationwithtimestamp(context: managedContext)
+             newLocation.longitude = location.coordinate.latitude
+             newLocation.latitude = location.coordinate.longitude
+             newLocation.timestamp = Date()
+             newLocation.applicationState  = ApplicationState().toString()
+
+             cdsLocationWithTimestamp.saveContext()
             
              
          }
@@ -241,48 +235,33 @@ public class GCLocation: NSObject {
               if reachability.connection == .wifi || reachability.connection == .cellular
               {
                   print("Reachable via WiFi or celluar")
-//                  let managedContext = self.cdsLocationWithTimestamp.managedContext
-//
-//                  // Fetch all persons
-//                  let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
-//
-//                  do {
-//                      let results = try managedContext.fetch(fetchRequest)
-//                      if results.count > 0 {
-//                          var resultsDict = [[String: Any]]()
-//                          for result in results {
-//
-//                              resultsDict.append(result.toDict())
-//                          }
-//
-//
-//                          self.callAPIForPlaceStorForOffline(parameters: resultsDict)
-//                      }
-//
-//
-//                  } catch let error as NSError {
-//                      print("Fetch error: \(error), \(error.userInfo)")
-//                  }
+                  let managedContext = self.cdsLocationWithTimestamp.managedContext
+
+                  // Fetch all persons
+                  let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
                   
-                  if let results = UserDefaults.standard.retrieve(object: [LocationUpdateFailurUserDefault].self, fromKey: "LocationUpdateFailurUserDefault"){
-                      
-                     
-                          self.callAPIForPlaceStorForOffline(parameters: results  as! [[String: Any]])
-                     
+                  do {
+                      let results = try managedContext.fetch(fetchRequest)
+                      if results.count > 0 {
+                          var resultsDict = [[String: Any]]()
+                          for result in results {
+                             
+                              resultsDict.append(result.toDict())
+                          }
                           
                           
-                      
+                          self.callAPIForPlaceStorForOffline(parameters: resultsDict)
                       }
+                      
+
+                  } catch let error as NSError {
+                      print("Fetch error: \(error), \(error.userInfo)")
                   }
-                 
-                  
-                  
-                  
                   print("Network not reachable")
                   
               }
               
-          
+          }
          
       }
   //// WEB API public funcTIONs
@@ -304,25 +283,21 @@ public class GCLocation: NSObject {
                 }
             } else {
                 
-                var aLocationUpdateFailur: LocationUpdateFailurUserDefault!
-                aLocationUpdateFailur.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
-                aLocationUpdateFailur.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
-                aLocationUpdateFailur.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
-
-                //To save the object
-                
-                var aResult = UserDefaults.standard.retrieve(object: [LocationUpdateFailurUserDefault].self, fromKey: "LocationUpdateFailurUserDefault")
-                aResult?.append(aLocationUpdateFailur)
-                
-                UserDefaults.standard.save(customObject: aResult, inKey: "LocationUpdateFailurUserDefault")
-
-//                let managedContext =  self.cdsLocationWithTimestamp.managedContext
+//                var aLocationUpdateFailur: LocationUpdateFailurUserDefault!
+//                aLocationUpdateFailur.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
+//                aLocationUpdateFailur.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
+//                aLocationUpdateFailur.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
 //
-//                let newLocation = LocationUpdateFailur(context: managedContext)
-//                newLocation.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
-//                newLocation.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
-//                newLocation.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
-//                self.cdsLocationWithTimestamp.saveContext()
+//                //To save the object
+//                UserDefaults.standard.save(customObject: aLocationUpdateFailur, inKey: "aLocationUpdateFailur")
+
+                let managedContext =  self.cdsLocationWithTimestamp.managedContext
+
+                let newLocation = LocationUpdateFailur(context: managedContext)
+                newLocation.customer_id = (dict["positions"] as! [[String: Any]])[0]["customer_id"] as? String
+                newLocation.geo_hash = (dict["positions"] as! [[String: Any]])[0]["geo_hash"] as? String
+                newLocation.tstmp = Int16(truncatingIfNeeded: (dict["positions"] as! [[String: Any]])[0]["tstmp"] as! Int)
+                self.cdsLocationWithTimestamp.saveContext()
                 
                 
             }
@@ -342,26 +317,23 @@ public class GCLocation: NSObject {
                 }
                 if status == 201
                 {
-//                    let managedContext = self.cdsLocationWithTimestamp.managedContext
-//
-//                    // Fetch all persons
-//                    let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
-//                    fetchRequest.includesPropertyValues = true
-//
-//                    do {
-//                        let results = try managedContext.fetch(fetchRequest)
-//                        for result in results {
-//                            managedContext.delete(result)
-//                        }
-//                        self.cdsLocationWithTimestamp.saveContext()
-//
-//
-//                    } catch let error as NSError {
-//                        print("Fetch error: \(error), \(error.userInfo)")
-//                    }
+                    let managedContext = self.cdsLocationWithTimestamp.managedContext
+
+                    // Fetch all persons
+                    let fetchRequest = NSFetchRequest<LocationUpdateFailur>(entityName: "LocationUpdateFailur")
+                    fetchRequest.includesPropertyValues = true
                     
-                    
-                    UserDefaults.standard.removeObject(forKey: "LocationUpdateFailurUserDefault")
+                    do {
+                        let results = try managedContext.fetch(fetchRequest)
+                        for result in results {
+                            managedContext.delete(result)
+                        }
+                        self.cdsLocationWithTimestamp.saveContext()
+                        
+
+                    } catch let error as NSError {
+                        print("Fetch error: \(error), \(error.userInfo)")
+                    }
                 }
             }
         }

@@ -36,7 +36,7 @@ final class LocationManager: NSObject {
     
     private var lastLocation:CLLocation?
     private var reverseGeocoding = false
-   // let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Place API")
+    let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "Place API")
     //Singleton Instance
     static let shared: LocationManager = {
         let instance = LocationManager()

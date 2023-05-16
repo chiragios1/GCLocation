@@ -6,11 +6,13 @@
 //
 
 import Foundation
+
 import Alamofire
 import Reachability
 import SystemConfiguration
 import os
-import CocoaLumberjackSwift
+import CocoaLumberjack
+//import CocoaLumberjackSwift
 struct MYError : Error {
     let description : String
     let domain : String

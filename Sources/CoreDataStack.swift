@@ -10,7 +10,11 @@ public class CoreDataStack {
 
     public lazy var storeContainer: NSPersistentContainer = {
            
-            guard let modelURL = Bundle.module.url(forResource:self.modelName, withExtension: "momd") else { fatalError("Failed to find data model") }
+//            guard let modelURL = Bundle.module.url(forResource:self.modelName, withExtension: "momd") else { fatalError("Failed to find data model") }
+        
+        guard let modelURL = Bundle(for: GCLocation.self).url(forResource: self.modelName, withExtension: "momd")  else {
+            fatalError("Failed to find data model")
+        }
             guard let model = NSManagedObjectModel(contentsOf: modelURL) else { fatalError("Failed to load data model") }
            
             let container =  NSPersistentContainer(name: self.modelName, managedObjectModel: model)
@@ -39,4 +43,5 @@ extension NSManagedObject {
         let keys = Array(entity.attributesByName.keys)
         return dictionaryWithValues(forKeys:keys)
     }
+   
 }

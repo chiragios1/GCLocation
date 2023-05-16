@@ -87,3 +87,4 @@ class LocationUpdateFailurUserDefault: Codable {
     }
   //Your stuffs
 }
+

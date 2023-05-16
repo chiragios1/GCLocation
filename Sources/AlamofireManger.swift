@@ -11,8 +11,9 @@ import Alamofire
 import Reachability
 import SystemConfiguration
 import os
-import CocoaLumberjack
-//import CocoaLumberjackSwift
+//import CocoaLumberjack
+import ZipArchive
+import CocoaLumberjackSwift
 struct MYError : Error {
     let description : String
     let domain : String

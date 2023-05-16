@@ -9,8 +9,8 @@ import Foundation
 import CoreLocation
 //import CoreData
 import  Alamofire
-import CocoaLumberjack
-//import CocoaLumberjackSwift
+//import CocoaLumberjack
+import CocoaLumberjackSwift
 import OSLog
 import Darwin
 import CommonCrypto
@@ -19,7 +19,7 @@ import os
 import BackgroundTasks
 import Reachability
 import  UIKit
-import SSZipArchive
+import ZipArchive
 @available(macOS 11.0, *)
 public class GCLocation: NSObject {
    // var locationObject = [Locationwithtimestamp]()

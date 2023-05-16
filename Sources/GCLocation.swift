@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import CoreData
 import  Alamofire
-import CocoaLumberjack
+//import CocoaLumberjack
 import CocoaLumberjackSwift
 import OSLog
 import Darwin
